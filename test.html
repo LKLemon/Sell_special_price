@@ -83,7 +83,7 @@
     <h1>二手物品出售</h1>
 
     <div class="item">
-        <img src="./assets/images/stealcase_chair_v2.png" alt="Item Image">
+        <img src="./assets/images/stealcase_chair_v2.png" alt="Item Image" onclick="openModal('./assets/images/stealcase_chair_v2.png')">
         <div class="item-details">
             <h2>steelcase leap v2</h2>
             <p>坐起来倍儿舒服，工作效率立马200%</p>
@@ -91,29 +91,6 @@
             <a href="https://store.steelcase.com/seating/office-chairs/leap" class="item-link">查看详情</a>
         </div>
     </div>
-
-    <div class="item">
-        <img src="./assets/images/airtok.png" alt="Item Image">
-        <div class="item-details">
-            <h2>airtok 空气净化器</h2>
-            <p>房间空气瞬间变得清新了！</p>
-            <p class="item-price">价格: $30</p>
-            <a href="https://www.amazon.ca/AIRTOK-Purifier-Bedroom-Fragrance-Ozone-Free/dp/B0BPXX4JHD/ref=asc_df_B0BPXX4JHD/?tag=googleshopc0c-20&linkCode=df0&hvadid=683545578163&hvpos=&hvnetw=g&hvrand=30256307602275105&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9000871&hvtargid=pla-2200363249629&mcid=eddd6bab1852309693a9d9cf97ec9a0a&gad_source=1&th=1" class="item-link">查看详情</a>
-        </div>
-    </div>
-
-    <div class="item">
-        <img src="./assets/images/T_FAL_Air_wok.png" alt="Item Image">
-        <div class="item-details">
-            <h2>T-Fal 空气炸锅</h2>
-            <p>妈妈再也不用担心我吃油炸食品了，
-                非油炸培烤的来了！
-            </p>
-            <p class="item-price">价格: $60</p>
-            <a href="https://www.amazon.ca/EY201850-Dishwasher-Patented-Basket-System/dp/B07NHPTKR8/ref=sr_1_3?crid=2CGSCSY6N0828&dib=eyJ2IjoiMSJ9.jObOD8ouXXAad2rw_6wMY-QFQsQhx-KCf9ti1GCPFso_q0Zyq7dlTx0SB67TF5kD5eiDIeK4-jPVLhpcdc4Hb9PpaFbJXnDqK4R6jCAr8f9XRBEDe65eefuMVA8fyD9u45ZSg5jv_pAX4qIQ3vnxz97PkYEoOI0_Ue1xhOID5-HXLNrSvq_dUXrNg5_YY9G6ycXSQlMw6ecgPuIgx74xo_42uOFQTfY0OQ62m1mAkg4.X_XcbK5JHQFUJPFjSzuKVFKSvtvToTZ6hY_rYtKbGdU&dib_tag=se&keywords=t-fal+%E7%A9%BA%E6%B0%94%E7%82%B8%E9%94%85+4.2l&qid=1716522251&s=kitchen&sprefix=t-fal+%E7%A9%BA%E6%B0%94%E7%82%B8%E9%94%85+4+2l%2Ckitchen%2C127&sr=1-3" class="item-link">查看详情</a>
-        </div>
-    </div>
-
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -124,15 +101,6 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('.item img');
-            images.forEach(image => {
-                image.addEventListener('click', function() {
-                    openModal(this.src);
-                });
-            });
-        });
-
         function openModal(imageUrl) {
             document.getElementById('modalImage').src = imageUrl;
             document.getElementById('myModal').style.display = "block";
