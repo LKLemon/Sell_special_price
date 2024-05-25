@@ -3,21 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zhaohan物品出售</title>
+    <title>二手物品出售</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 40px;
         }
         .item {
             border: 1px solid #ccc;
@@ -26,18 +15,11 @@
             border-radius: 8px;
             display: flex;
             align-items: center;
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        .item:hover {
-            transform: scale(1.05);
         }
         .item img {
             max-width: 150px;
             margin-right: 16px;
             cursor: pointer;
-            border-radius: 4px;
         }
         .item-details {
             flex: 1;
@@ -54,10 +36,6 @@
             color: white;
             text-decoration: none;
             border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        .item-link:hover {
-            background-color: #0056b3;
         }
         /* Modal Styles */
         .modal {
@@ -98,56 +76,21 @@
             text-decoration: none;
             cursor: pointer;
         }
-        /* Extra Styles */
-        .search-bar {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .search-bar input {
-            padding: 10px;
-            width: 80%;
-            max-width: 400px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-        .favorites {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .favorites button {
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .favorites button:hover {
-            background-color: #0056b3;
-        }
-        .updated {
-            text-align: center;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Zhaohan物品出售</h1>
-        <div class="search-bar">
-            <input type="text" placeholder="搜索物品...">
+
+    <h1>二手物品出售</h1>
+    <p>详情联系小助手微信：wzh101</p>
+    <div class="item">
+        <img src="./assets/images/stealcase_chair_v2.png" alt="Item Image">
+        <div class="item-details">
+            <h2>steelcase leap v2</h2>
+            <p>坐起来倍儿舒服，工作效率立马200%</p>
+            <p class="item-price">价格: $350</p>
+            <a href="https://store.steelcase.com/seating/office-chairs/leap" class="item-link">查看详情</a>
         </div>
-        <p>详情联系小助手微信：wzh101</p>
-        <div class="item">
-            <img src="./assets/images/stealcase_chair_v2.png" alt="Item Image">
-            <div class="item-details">
-                <h2>steelcase leap v2 椅子</h2>
-                <p>坐起来倍儿舒服，工作效率立马200%</p>
-                <p class="item-price">价格: $350</p>
-                <a href="https://store.steelcase.com/seating/office-chairs/leap" class="item-link">查看详情</a>
-            </div>
-        </div>
+    </div>
 
     <div class="item">
         <img src="./assets/images/airtok.png" alt="Item Image">
@@ -183,7 +126,7 @@
     </div>
 
     <div class="item">
-        <img src="./assets/images/pot.png" alt="Item Image">
+        <img src="./assets/images/instantpot.png" alt="Item Image">
         <div class="item-details">
             <h2>美的电饭煲</h2>
             <p>这个做出来的米饭真的香！
@@ -206,9 +149,9 @@
     </div>
 
     <div class="item">
-        <img src="./assets/images/dysonv15.png" alt="Item Image">
+        <img src="./assets/images/guitar.png" alt="Item Image">
         <div class="item-details">
-            <h2>dyson v15 吸尘器（四个头）</h2>
+            <h2>dyson v15（四个头）</h2>
             <p>今天也有好好清洁呢
                 还能统计消灭了多少灰尘
                 又是元气满满的一天呢
@@ -258,7 +201,7 @@
     <div class="item">
         <img src="./assets/images/chair.png" alt="Item Image">
         <div class="item-details">
-            <h2>舒服的椅子</h2>
+            <h2>舒服的转椅</h2>
             <p>坐起来真不错
             </p>
             <p class="item-price">价格: $50</p>
@@ -279,11 +222,22 @@
                 详情联系小助手</a>
         </div>
     </div>
-    <p>To Be Continue...</p>
-    </div>
+    <p>持续更新中！</p>
 
-    
-    
+
+
+    <!-- <div class="item">
+        <img src="./assets/images/guitar.png" alt="Item Image">
+        <div class="item-details">
+            <h2></h2>
+            <p>好看好搬好拆卸
+            </p>
+            <p class="item-price">价格: $500</p>
+            <a href="https://amazon.ca/Yamaha-FG830-Acoustic-Guitar-Natural/dp/B01CFOAQP2/ref=asc_df_B01CFOAQP2/?tag=googleshopc0c-20&linkCode=df0&hvadid=335979969975&hvpos=&hvnetw=g&hvrand=2228647222519820943&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9000871&hvtargid=pla-384958103218&psc=1&mcid=94d9ecd327173273a10b31a2ae5f4499" class="item-link">查看详情</a>
+        </div>
+    </div> -->
+
+
     <!-- The Modal -->
     <div id="myModal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
@@ -298,21 +252,6 @@
             images.forEach(image => {
                 image.addEventListener('click', function() {
                     openModal(this.src);
-                });
-            });
-
-            const searchInput = document.querySelector('.search-bar input');
-            searchInput.addEventListener('input', function() {
-                const searchQuery = searchInput.value.toLowerCase();
-                const items = document.querySelectorAll('.item');
-                
-                items.forEach(item => {
-                    const itemName = item.querySelector('h2').textContent.toLowerCase();
-                    if (itemName.includes(searchQuery)) {
-                        item.style.display = 'flex';
-                    } else {
-                        item.style.display = 'none';
-                    }
                 });
             });
         });
@@ -344,5 +283,6 @@
 
         document.addEventListener('DOMContentLoaded', logClickCounts);
     </script>
+
 </body>
 </html>
