@@ -59,6 +59,27 @@
         .item-link:hover {
             background-color: #0056b3;
         }
+        .sold-button, .unsold-button {
+            margin-top: 8px;
+            padding: 8px 16px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .sold-button {
+            background-color: #28a745;
+        }
+        .sold-button:hover {
+            background-color: #218838;
+        }
+        .unsold-button {
+            background-color: #dc3545;
+        }
+        .unsold-button:hover {
+            background-color: #c82333;
+        }
         .section-title {
             text-align: center;
             margin-top: 40px;
@@ -147,6 +168,9 @@
         <h2 class="section-title">在售物品</h2>
         <div id="available-items"></div>
 
+        <h2 class="section-title">已售出物品</h2>
+        <div id="sold-items"></div>
+
         <p class="updated">To Be Continue...</p>
     </div>
 
@@ -182,6 +206,19 @@
                 });
             });
 
+            // Load sold items from localStorage
+            const soldItems = JSON.parse(localStorage.getItem('soldItems')) || [];
+            soldItems.forEach(itemId => {
+                const item = document.getElementById(itemId);
+                if (item) {
+                    document.getElementById('sold-items').appendChild(item);
+                    // Add unsold button
+                    addUnsoldButton(itemId);
+                    // Remove sold button
+                    removeSoldButton(itemId);
+                }
+            });
+
             // Example of adding items
             addItem('item1', './assets/images/stealcase_chair_v2.png', 'steelcase leap v2 椅子', '坐起来倍儿舒服，工作效率立马200%', '$350', 'https://store.steelcase.com/seating/office-chairs/leap');
             addItem('item2', './assets/images/table.png', '桌子', '颜色清新十分稀有～ 色彩护眼舒适 桌板140*60cm', '$80', '');
@@ -208,6 +245,88 @@
 
         function closeModal() {
             document.getElementById('myModal').style.display = "none";
+        }
+
+        function promptPassword(itemId, action) {
+            const password = prompt('请输入密码以继续:');
+            if (password === 'your_password_here') {
+                if (action === 'sold') {
+                    markAsSold(itemId);
+                } else if (action === 'unsold') {
+                    markAsUnsold(itemId);
+                }
+            } else {
+                alert('密码错误');
+            }
+        }
+
+        function markAsSold(itemId) {
+            const item = document.getElementById(itemId);
+            if (item) {
+                document.getElementById('sold-items').appendChild(item);
+                const soldItems = JSON.parse(localStorage.getItem('soldItems')) || [];
+                if (!soldItems.includes(itemId)) {
+                    soldItems.push(itemId);
+                    localStorage.setItem('soldItems', JSON.stringify(soldItems));
+                }
+                // Add unsold button and remove sold button
+                addUnsoldButton(itemId);
+                removeSoldButton(itemId);
+            }
+        }
+
+        function markAsUnsold(itemId) {
+            const item = document.getElementById(itemId);
+            if (item) {
+                document.getElementById('available-items').appendChild(item);
+                const soldItems = JSON.parse(localStorage.getItem('soldItems')) || [];
+                const index = soldItems.indexOf(itemId);
+                if (index > -1) {
+                    soldItems.splice(index, 1);
+                    localStorage.setItem('soldItems', JSON.stringify(soldItems));
+                }
+                // Add sold button and remove unsold button
+                addSoldButton(itemId);
+                removeUnsoldButton(itemId);
+            }
+        }
+
+        function addUnsoldButton(itemId) {
+            const item = document.getElementById(itemId);
+            const button = document.createElement('button');
+            button.className = 'unsold-button';
+            button.textContent = '放回在售';
+            button.onclick = function() {
+                promptPassword(itemId, 'unsold');
+            };
+            item.querySelector('.item-details').appendChild(button);
+        }
+
+        function removeUnsoldButton(itemId) {
+            const item = document.getElementById(itemId);
+            const button = item.querySelector('.unsold-button');
+            if (button) {
+                button.remove();
+            }
+        }
+
+        function addSoldButton(itemId) {
+            const item = document.getElementById(itemId);
+            const button = document.createElement('button');
+            button.className = 'sold-button';
+            button.textContent = '标记为已售出';
+            button.onclick = function() {
+                promptPassword(itemId, 'sold');
+            };
+            item.querySelector('.item-details').appendChild(button);
+        }
+
+        function removeSoldButton(itemId) {
+            const item = document.getElementById(itemId);
+            const button = item.querySelector('.sold-button');
+            if (button) {
+                button.remove();
+            }
         }
 
         function addItem(itemId, imgSrc, itemName, itemDescription, itemPrice, itemLink) {
@@ -239,10 +358,16 @@
             link.className = 'item-link';
             link.textContent = itemLink ? '原物链接' : '详情联系小助手';
 
+            const soldButton = document.createElement('button');
+            soldButton.className = 'sold-button';
+            soldButton.textContent = '标记为已售出';
+            soldButton.onclick = function() { promptPassword(itemId, 'sold'); };
+
             itemDetails.appendChild(h2);
             itemDetails.appendChild(pDescription);
             itemDetails.appendChild(pPrice);
             itemDetails.appendChild(link);
+            itemDetails.appendChild(soldButton);
 
             itemDiv.appendChild(img);
             itemDiv.appendChild(itemDetails);
