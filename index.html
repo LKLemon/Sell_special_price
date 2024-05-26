@@ -165,7 +165,7 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+       document.addEventListener('DOMContentLoaded', function() {
             const items = [
                 {id: 'item1', imgSrc: './assets/images/stealcase_chair_v2.png', name: 'steelcase leap v2 椅子', description: '坐起来倍儿舒服，工作效率立马200%', price: '$299', link: 'https://store.steelcase.com/seating/office-chairs/leap', status: 'available'},
                 {id: 'item2', imgSrc: './assets/images/table.png', name: '桌子', description: '颜色清新十分稀有～ 色彩护眼舒适 桌板140*60cm', price: '$59', link: '', status: 'available'},
@@ -211,7 +211,10 @@
 
             function closeModal() {
                 document.getElementById('myModal').style.display = 'none';
-                document.getElementById('modalVideo').pause();
+                document.getElementById('modalImage').src = '';
+                const modalVideo = document.getElementById('modalVideo');
+                modalVideo.pause();
+                modalVideo.src = '';
             }
 
             function addItem(item) {
@@ -265,6 +268,22 @@
                     soldItems.appendChild(itemDiv);
                 }
             }
+
+            const searchInput = document.querySelector('.search-bar input');
+            searchInput.addEventListener('input', function() {
+                const searchQuery = searchInput.value.toLowerCase();
+                const items = document.querySelectorAll('.item');
+                
+                items.forEach(item => {
+                    const itemName = item.querySelector('h2').textContent.toLowerCase();
+                    const itemDescription = item.querySelector('p').textContent.toLowerCase();
+                    if (itemName.includes(searchQuery) || itemDescription.includes(searchQuery)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
         });
     </script>
 </body>
