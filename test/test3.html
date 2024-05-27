@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zhaohan物品出售</title>
+    <title>Zhaohan物品出售 持续更新ing</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,7 +33,8 @@
         .item:hover {
             transform: scale(1.05);
         }
-        .item img {
+        .item img,
+        .item video {
             max-width: 150px;
             margin-right: 16px;
             cursor: pointer;
@@ -59,6 +60,10 @@
         .item-link:hover {
             background-color: #0056b3;
         }
+        .section-title {
+            text-align: center;
+            margin-top: 40px;
+        }
         /* Modal Styles */
         .modal {
             display: none;
@@ -79,7 +84,8 @@
             width: 80%;
             max-width: 700px;
         }
-        .modal-content img {
+        .modal-content img,
+        .modal-content video {
             width: 100%;
         }
         .close {
@@ -134,220 +140,142 @@
 </head>
 <body>
     <div class="container">
-        <h1>Zhaohan物品出售</h1>
+        <h1>Zhaohan物品出售 持续更新ing</h1>
         <div class="search-bar">
             <input type="text" placeholder="搜索物品...">
         </div>
         <p>详情联系小助手微信：wzh101</p>
-        <div class="item">
-            <img src="./assets/images/stealcase_chair_v2.png" alt="Item Image">
-            <div class="item-details">
-                <h2>steelcase leap v2 椅子</h2>
-                <p>坐起来倍儿舒服，工作效率立马200%</p>
-                <p class="item-price">价格: $350</p>
-                <a href="https://store.steelcase.com/seating/office-chairs/leap" class="item-link">原物链接</a>
-            </div>
-        </div>
 
-        <div class="item">
-            <img src="./assets/images/table.png" alt="Item Image">
-            <div class="item-details">
-                <h2>桌子</h2>
-                <p>颜色清新十分稀有～ 色彩护眼舒适 
-                桌板140*60cm
-                </p>
-                <p class="item-price">价格: $80</p>
-                <a href="" class="item-link">详情联系小助手</a>
-            </div>
-        </div>
+        <h2 class="section-title">在售物品</h2>
+        <div id="available-items"></div>
 
-        <div class="item">
-            <img src="./assets/images/speaker.png" alt="Item Image">
-            <div class="item-details">
-                <h2>blue yeti 话筒</h2>
-                <p>听这是谁优美歌声的旋律 哦原来是我的啊
-                </p>
-                <p class="item-price">价格: $60</p>
-                <a href="https://www.amazon.ca/Blue-Microphones-Yeti-Microphone-Blackout/dp/B00N1YPXW2/ref=sr_1_1_sspa?dib=eyJ2IjoiMSJ9.5Nodv8VroGXGpVLPiMFvWRZU4Tp9Yr9VC8gASUZ0j5tsdSXjEW86tbmrQ-20l_jlOGiCSwRKJbCaV4GKxGGA8LBkgsmayqiwKTBWKx_lM3h_J49NDLCBtocrgpCiOSVZiHjJ6aJaamwKOoYSIoF0aeMPcxhe0D-26D5Os1NwodT8AshLp9-lUQQovd70WSPHUiHbS7P4PbBBlKrEDDbPgKNXqH_hMnxO5wBGcYyA4lKyHwEYdsuwiMTu2y3h_CKfEUifEMNaUcZt_OqDccA-xjn0zu6-anLozo7aOpTro5A.m38TefJjvhmtFmr9Kz8xc_MXLToYxUH0SlUHANIvowU&dib_tag=se&hvadid=667162345190&hvdev=c&hvlocphy=9000871&hvnetw=g&hvqmt=e&hvrand=334050496468257226&hvtargid=kwd-296231620730&hydadcr=20848_13479298&keywords=blue+yeti&qid=1716659725&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1" class="item-link">原物链接</a>
-            </div>
-        </div>
+        <h2 class="section-title">已售物品</h2>
+        <div id="sold-items"></div>
 
-        <div class="item">
-            <img src="./assets/images/heater1.png" alt="Item Image">
-            <div class="item-details">
-                <h2>honeywell heater 电暖器</h2>
-                <p>寒冬时身边飘落的雪花 比起瑟瑟发抖蜷缩在被窝里的窘态 您的未雨绸缪总是会洒脱的多
-                    轻巧便携的他也会给您雪中送炭
-                </p>
-                <p class="item-price">价格: $40</p>
-                <a href="https://www.amazon.ca/HONEYWELL-Ceramic-Tower-Heater-HCE317BC/dp/B07GQ4GM1Y/ref=sr_1_27?crid=3SKX5VFE3ZOMK&dib=eyJ2IjoiMSJ9.3XHVvJmLNfJh8vHqpiNnVjLHDaI7ac14ztKCS34uizJcygFmHyuYH-Xh_MHlHr3GC3DdBC5nRNGRUTk99kc0-r2jiK7lh3CCYmPjkU4V7yTzjAMp437XZOKbfZ1Tmj2Nh9avmAViyUJtGo6P__pzg5dK3GYxqPKqv0qu55Al1PkyuOEPXY7D-9bWnuEqGgE2woV2tawZIDc77nNa-65_zoiYgTOYYlvU6tpxASvPDASauoPRO2zz5SzxMWj0heQ69PeJOy08TVLOsrYZgpuBfdGLeP-5KMpwMsvUHBdmPsc.YEpo6RxX-NvvVlL8_qwmGczya1SXD4A20Hy7e3puAIM&dib_tag=se&keywords=honeywell&qid=1716660391&sprefix=honeywell%2Caps%2C240&sr=8-27" class="item-link">原物链接</a>
-            </div>
-        </div>
-
-    <div class="item">
-        <img src="./assets/images/airtok.png" alt="Item Image">
-        <div class="item-details">
-            <h2>airtok 空气净化器</h2>
-            <p>房间空气瞬间变得清新了！</p>
-            <p class="item-price">价格: $30</p>
-            <a href="https://www.amazon.ca/AIRTOK-Purifier-Bedroom-Fragrance-Ozone-Free/dp/B0BPXX4JHD/ref=asc_df_B0BPXX4JHD/?tag=googleshopc0c-20&linkCode=df0&hvadid=683545578163&hvpos=&hvnetw=g&hvrand=30256307602275105&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9000871&hvtargid=pla-2200363249629&mcid=eddd6bab1852309693a9d9cf97ec9a0a&gad_source=1&th=1" class="item-link">原物链接</a>
-        </div>
+        <p class="updated">To Be Continue...</p>
     </div>
 
-    <div class="item">
-        <img src="./assets/images/T_FAL_Air_wok.png" alt="Item Image">
-        <div class="item-details">
-            <h2>T-Fal 空气炸锅</h2>
-            <p>妈妈再也不用担心我吃油炸食品了，
-                非油炸培烤的来了！
-            </p>
-            <p class="item-price">价格: $60</p>
-            <a href="https://www.amazon.ca/EY201850-Dishwasher-Patented-Basket-System/dp/B07NHPTKR8/ref=sr_1_3?crid=2CGSCSY6N0828&dib=eyJ2IjoiMSJ9.jObOD8ouXXAad2rw_6wMY-QFQsQhx-KCf9ti1GCPFso_q0Zyq7dlTx0SB67TF5kD5eiDIeK4-jPVLhpcdc4Hb9PpaFbJXnDqK4R6jCAr8f9XRBEDe65eefuMVA8fyD9u45ZSg5jv_pAX4qIQ3vnxz97PkYEoOI0_Ue1xhOID5-HXLNrSvq_dUXrNg5_YY9G6ycXSQlMw6ecgPuIgx74xo_42uOFQTfY0OQ62m1mAkg4.X_XcbK5JHQFUJPFjSzuKVFKSvtvToTZ6hY_rYtKbGdU&dib_tag=se&keywords=t-fal+%E7%A9%BA%E6%B0%94%E7%82%B8%E9%94%85+4.2l&qid=1716522251&s=kitchen&sprefix=t-fal+%E7%A9%BA%E6%B0%94%E7%82%B8%E9%94%85+4+2l%2Ckitchen%2C127&sr=1-3" class="item-link">原物链接</a>
-        </div>
-    </div>
-
-    <div class="item">
-        <img src="./assets/images/instantpot.png" alt="Item Image">
-        <div class="item-details">
-            <h2>高压锅</h2>
-            <p>炖肉好快！多功能
-            </p>
-            <p class="item-price">价格: $30</p>
-            <a href="" class="item-link">详情联系小助手</a>
-        </div>
-    </div>
-
-    <div class="item">
-        <img src="./assets/images/pot.png" alt="Item Image">
-        <div class="item-details">
-            <h2>美的电饭煲</h2>
-            <p>这个做出来的米饭真的香！
-            </p>
-            <p class="item-price">价格: $60</p>
-            <a href="https://www.amazon.ca/Midea-Steamer-Vegetable-Automatic-Digital/dp/B0D2M1D5J1/ref=asc_df_B07C54TCH2/?tag=googleshopc0c-20&linkCode=df0&hvadid=459616812146&hvpos=&hvnetw=g&hvrand=4191944521268539787&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9000871&hvtargid=pla-1344937441367&mcid=d809c55960d33182905656dda0030e57&th=1
-            " class="item-link">原物链接</a>
-        </div>
-    </div>
-
-    <div class="item">
-        <img src="./assets/images/guitar.png" alt="Item Image">
-        <div class="item-details">
-            <h2>fg830雅马哈吉他 ➕琴包</h2>
-            <p>谁还没有个音乐梦呢？！
-            </p>
-            <p class="item-price">价格: $360</p>
-            <a href="https://amazon.ca/Yamaha-FG830-Acoustic-Guitar-Natural/dp/B01CFOAQP2/ref=asc_df_B01CFOAQP2/?tag=googleshopc0c-20&linkCode=df0&hvadid=335979969975&hvpos=&hvnetw=g&hvrand=2228647222519820943&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9000871&hvtargid=pla-384958103218&psc=1&mcid=94d9ecd327173273a10b31a2ae5f4499" class="item-link">原物链接</a>
-        </div>
-    </div>
-
-    <div class="item">
-        <img src="./assets/images/dysonv15.png" alt="Item Image">
-        <div class="item-details">
-            <h2>dyson v15 吸尘器（四个头）</h2>
-            <p>今天也有好好清洁呢
-                还能统计消灭了多少灰尘
-                又是元气满满的一天呢
-            </p>
-            <p class="item-price">价格: $500</p>
-            <a href="https://www.dysoncanada.ca/en/vacuum-cleaners/cordless/v15" class="item-link">原物链接</a>
-        </div>
-    </div>
-
-    <div class="item">
-        <img src="./assets/images/bed.png" alt="Item Image">
-        <div class="item-details">
-            <h2>好看的床架 (double)</h2>
-            <p>好看好搬好拆卸
-            </p>
-            <p class="item-price">价格: $100</p>
-            <a href="" class="item-link">
-                详情联系小助手
-            </a>
-        </div>
-    </div>
-
-    <div class="item">
-        <img src="./assets/images/bed.png" alt="Item Image">
-        <div class="item-details">
-            <h2>床垫(double)</h2>
-            <p>我有俩床垫 每个80 可以自己挑
-            </p>
-            <p class="item-price">价格: $80</p>
-            <a href="" class="item-link">
-                详情联系小助手</a>
-        </div>
-    </div>
-
-    <div class="item">
-        <img src="./assets/images/bed.png" alt="Item Image">
-        <div class="item-details">
-            <h2>床架➕床垫 combo special(double)</h2>
-            <p>两个一起拿走打包价
-            </p>
-            <p class="item-price">价格: $150</p>
-            <a href="" class="item-link">
-                详情联系小助手</a>
-        </div>
-    </div>
-    
-    <div class="item">
-        <img src="./assets/images/chair.png" alt="Item Image">
-        <div class="item-details">
-            <h2>舒服的椅子</h2>
-            <p>坐起来真不错
-            </p>
-            <p class="item-price">价格: $50</p>
-            <a href="" class="item-link">
-                详情联系小助手</a>
-        </div>
-    </div>
-
-    <div class="item">
-        <img src="./assets/images/cart1.png" alt="Item Image">
-        <div class="item-details">
-            <h2>买菜小车</h2>
-            <p>买菜再也不勒手了！
-                nations 那种
-            </p>
-            <p class="item-price">价格: $10</p>
-            <a href="" class="item-link">
-                详情联系小助手</a>
-        </div>
-    </div>
-
-    <div class="item">
-        <img src="./assets/images/lamp.jpg" alt="Item Image">
-        <div class="item-details">
-            <h2>灯</h2>
-            <p>再也不怕天黑了！</p>
-            
-            <p class="item-price">价格: $5</p>
-            <a href="" class="item-link">
-                详情联系小助手</a>
-        </div>
-    </div>
-
-    <p>To Be Continue...</p>
-    </div>
-
-    
-    
     <!-- The Modal -->
     <div id="myModal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
         <div class="modal-content">
-            <img id="modalImage">
+            <img id="modalImage" style="display:none;">
+            <video id="modalVideo" style="display:none;" controls></video>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('.item img');
-            images.forEach(image => {
-                image.addEventListener('click', function() {
-                    openModal(this.src);
-                });
-            });
+            const items = [
+                {id: 'item1', imgSrc: './assets/images/stealcase_chair_v2.png', name: 'steelcase leap v2 椅子', description: '坐起来倍儿舒服，工作效率立马200%', price: '$299', link: 'https://store.steelcase.com/seating/office-chairs/leap', status: 'available'},
+                {id: 'item2', imgSrc: './assets/images/table.png', name: '桌子', description: '颜色清新十分稀有～ 色彩护眼舒适 桌板140*60cm', price: '$59', link: '', status: 'sold'},
+                {id: 'item3', imgSrc: './assets/images/speaker.png', name: 'blue yeti 话筒', description: '听这是谁优美歌声的旋律 哦原来是我的啊', price: '$59', link: 'https://www.amazon.ca/Blue-Microphones-Yeti-Microphone-Blackout/dp/B00N1YPXW2/ref=sr_1_1_sspa?dib=eyJ2IjoiMSJ9.5Nodv8VroGXGpVLPiMFvWRZU4Tp9Yr9VC8gASUZ0j5tsdSXjEW86tbmrQ-20l_jlOGiCSwRKJbCaV4GKxGGA8LBkgsmayqiwKTBWKx_lM3h_J49NDLCBtocrgpCiOSVZiHjJ6aJaamwKOoYSIoF0aeMPcxhe0D-26D5Os1NwodT8AshLp9-lUQQovd70WSPHUiHbS7P4PbBBlKrEDDbPgKNXqH_hMnxO5wBGcYyA4lKyHwEYdsuwiMTu2y3h_CKfEUifEMNaUcZt_OqDccA-xjn0zu6-anLozo7aOpTro5A.m38TefJjvhmtFmr9Kz8xc_MXLToYxUH0SlUHANIvowU&dib_tag=se&hvadid=667162345190&hvdev=c&hvlocphy=9000871&hvnetw=g&hvqmt=e&hvrand=334050496468257226&hvtargid=kwd-296231620730&hydadcr=20848_13479298&keywords=blue+yeti&qid=1716659725&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1', status: 'available'},
+                {id: 'item4', imgSrc: './assets/images/heater1.png', name: 'honeywell heater 电暖器', description: '寒冬时身边飘落的雪花 比起瑟瑟发抖蜷缩在被窝里的窘态 您的未雨绸缪总是会洒脱的多 轻巧便携的他也会给您雪中送炭', price: '$30', link: 'https://www.amazon.ca/HONEYWELL-Ceramic-Tower-Heater-HCE317BC/dp/B07GQ4GM1Y/ref=sr_1_27?crid=3SKX5VFE3ZOMK&dib=eyJ2IjoiMSJ9.3XHVvJmLNfJh8vHqpiNnVjLHDaI7ac14ztKCS34uizJcygFmHyuYH-Xh_MHlHr3GC3DdBC5nRNGRUTk99kc0-r2jiK7lh3CCYmPjkU4V7yTzjAMp437XZOKbfZ1Tmj2Nh9avmAViyUJtGo6P__pzg5dK3GYxqPKqv0qu55Al1PkyuOEPXY7D-9bWnuEqGgE2woV2tawZIDc77nNa-65_zoiYgTOYYlvU6tpxASvPDASauoPRO2zz5SzxMWj0heQ69PeJOy08TVLOsrYZgpuBfdGLeP-5KMpwMsvUHBdmPsc.YEpo6RxX-NvvVlL8_qwmGczya1SXD4A20Hy7e3puAIM&dib_tag=se&keywords=honeywell&qid=1716660391&sprefix=honeywell%2Caps%2C240&sr=8-27', status: 'available'},
+                {id: 'item5', imgSrc: './assets/images/airtok.png', name: 'airtok 空气净化器', description: '房间空气瞬间变得清新了！', price: '$30', link: 'https://www.amazon.ca/AIRTOK-Purifier-Bedroom-Fragrance-Ozone-Free/dp/B0BPXX4JHD/ref=asc_df_B0BPXX4JHD/?tag=googleshopc0c-20&linkCode=df0&hvadid=683545578163&hvpos=&hvnetw=g&hvrand=30256307602275105&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9000871&hvtargid=pla-2200363249629&mcid=eddd6bab1852309693a9d9cf97ec9a0a&gad_source=1&th=1', status: 'sold'},
+                {id: 'item6', imgSrc: './assets/images/T_FAL_Air_wok.png', name: 'T-Fal 空气炸锅', description: '妈妈再也不用担心我吃油炸食品了， 非油炸培烤的来了！', price: '$60', link: 'https://www.amazon.ca/EY201850-Dishwasher-Patented-Basket-System/dp/B07NHPTKR8/ref=sr_1_3?crid=2CGSCSY6N0828&dib=eyJ2IjoiMSJ9.jObOD8ouXXAad2rw_6wMY-QFQsQhx-KCf9ti1GCPFso_q0Zyq7dlTx0SB67TF5kD5eiDIeK4-jPVLhpcdc4Hb9PpaFbJXnDqK4R6jCAr8f9XRBEDe65eefuMVA8fyD9u45ZSg5jv_pAX4qIQ3vnxz97PkYEoOI0_Ue1xhOID5-HXLNrSvq_dUXrNg5_YY9G6ycXSQlMw6ecgPuIgx74xo_42uOFQTfY0OQ62m1mAkg4.X_XcbK5JHQFUJPFjSzuKVFKSvtvToTZ6hY_rYtKbGdU&dib_tag=se&keywords=t-fal+%E7%A9%BA%E6%B0%94%E7%82%B8%E9%94%85+4.2l&qid=1716522251&s=kitchen&sprefix=t-fal+%E7%A9%BA%E6%B0%94%E7%82%B8%E9%94%85+4+2l%2Ckitchen%2C127&sr=1-3', status: 'sold'},
+                {id: 'item7', imgSrc: './assets/images/instantpot.png', name: '高压锅', description: '炖肉好快！多功能', price: '$30', link: '', status: 'sold'},
+                {id: 'item8', imgSrc: './assets/images/potpot.png', name: '美的电饭煲', description: '这个做出来的米饭真的香 家乡的味道！', price: '$49', link: 'https://www.amazon.ca/Midea-Steamer-Vegetable-Automatic-Digital/dp/B0D2M1D5J1/ref=asc_df_B07C54TCH2/?tag=googleshopc0c-20&linkCode=df0&hvadid=459616812146&hvpos=&hvnetw=g&hvrand=4191944521268539787&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9000871&hvtargid=pla-1344937441367&mcid=d809c55960d33182905656dda0030e57&th=1', status: 'available'},
+                {id: 'item9', imgSrc: './assets/images/guitar.png', name: 'fg830雅马哈吉他 ➕琴包', description: '谁还没有个音乐梦呢？！', price: '$360', link: 'https://amazon.ca/Yamaha-FG830-Acoustic-Guitar-Natural/dp/B01CFOAQP2/ref=asc_df_B01CFOAQP2/?tag=googleshopc0c-20&linkCode=df0&hvadid=335979969975&hvpos=&hvnetw=g&hvrand=2228647222519820943&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9000871&hvtargid=pla-384958103218&psc=1&mcid=94d9ecd327173273a10b31a2ae5f4499', status: 'available'},
+                {id: 'item10', imgSrc: './assets/images/dysonv15.png', name: 'dyson v15 吸尘器（四个头）', description: '今天也有好好清洁呢 还能统计消灭了多少灰尘 又是元气满满的一天呢', price: '$500', link: 'https://www.dysoncanada.ca/en/vacuum-cleaners/cordless/v15', status: 'sold'},
+                {id: 'item11', imgSrc: './assets/images/bed.png', name: '好看的床架 (double)', description: '好看好搬好拆卸', price: '$99', link: '', status: 'available'},
+                {id: 'item12', imgSrc: './assets/images/matrice1.png', name: '床垫(double)', description: '有俩床垫 可以自己挑', price: '$79', link: '', status: 'available'},
+                {id: 'item13', imgSrc: './assets/images/bed.png', name: '床架➕床垫 combo (double)', description: '两个一起拿走打包价', price: '$139', link: '', status: 'available'},
+                {id: 'item14', imgSrc: './assets/images/chair.png', name: '人体力学电竞椅', description: '坐起来真不错', price: '$50', link: '', status: 'available'},
+                {id: 'item15', imgSrc: './assets/images/cart1.png', name: '买菜小车', description: '买菜再也不勒手了！ nations 那种', price: '$10', link: '', status: 'sold'},
+                {id: 'item16', imgSrc: './assets/images/lamp1.png', name: '灯1', description: '再也不怕天黑了！', price: '$5', link: '', status: 'available'},
+                {id: 'item17', imgSrc: './assets/images/lamp2.png', name: '灯2', description: '再也不怕天黑了！', price: '$5', link: '', status: 'sold'},
+                {id: 'item18', imgSrc: './assets/images/yoga.png', name: '瑜伽垫', description: '因为刚刚买没多久 用的不多', price: '$15', link: 'https://www.amazon.ca/UMINEUX-Friendly-Fitness-Exercise-Carrying/dp/B08RDKY753/ref=asc_df_B08RDKY753/?tag=googleshopc0c-20&linkCode=df0&hvadid=578925032633&hvpos=&hvnetw=g&hvrand=40916690155696748&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9000871&hvtargid=pla-1213826274915&psc=1&mcid=9732e7fad32436c3af52c07bab8db299', status: 'available'},
+                {id: 'item19', imgSrc: './assets/images/toaster.png', name: '烤面包机', description: '每天起床之后的好心情', price: '$10', link: '', status: 'available'},
+                {id: 'item20', imgSrc: './assets/videos/pc.mp4', name: 'AMD 6800xt pc台式机', description: '高性能PC，适合游戏和工作,送游戏', price: '$1399', link: '', status: 'available'}
+            ];
+
+            items.forEach(item => addItem(item));
+
+            function openModal(src) {
+                const isImage = src.endsWith('.jpg') || src.endsWith('.png');
+                const modalImage = document.getElementById('modalImage');
+                const modalVideo = document.getElementById('modalVideo');
+
+                if (isImage) {
+                    modalImage.src = src;
+                    modalImage.style.display = 'block';
+                    modalVideo.style.display = 'none';
+                } else {
+                    modalVideo.src = src;
+                    modalVideo.style.display = 'block';
+                    modalImage.style.display = 'none';
+                }
+
+                document.getElementById('myModal').style.display = 'block';
+            }
+
+            function closeModal() {
+                document.getElementById('myModal').style.display = 'none';
+
+                const modalImage = document.getElementById('modalImage');
+                const modalVideo = document.getElementById('modalVideo');
+
+                // 确保图片不显示
+                modalImage.style.display = 'none';
+                modalImage.src = '';
+
+                // 确保视频停止并且不显示
+                modalVideo.pause();
+                modalVideo.style.display = 'none';
+                modalVideo.src = '';
+            }
+
+            function addItem(item) {
+                const availableItems = document.getElementById('available-items');
+                const soldItems = document.getElementById('sold-items');
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'item';
+                itemDiv.id = item.id;
+
+                let mediaElement;
+                if (item.imgSrc.endsWith('.mp4')) {
+                    mediaElement = document.createElement('video');
+                    mediaElement.src = item.imgSrc;
+                    mediaElement.controls = true;
+                } else {
+                    mediaElement = document.createElement('img');
+                    mediaElement.src = item.imgSrc;
+                    mediaElement.alt = 'Item Image';
+                }
+                mediaElement.onclick = function() { openModal(item.imgSrc); };
+
+                const itemDetails = document.createElement('div');
+                itemDetails.className = 'item-details';
+
+                const h2 = document.createElement('h2');
+                h2.textContent = item.name;
+
+                const pDescription = document.createElement('p');
+                pDescription.textContent = item.description;
+
+                const pPrice = document.createElement('p');
+                pPrice.className = 'item-price';
+                pPrice.textContent = `价格: ${item.price}`;
+
+                const link = document.createElement('a');
+                link.href = item.link;
+                link.className = 'item-link';
+                link.textContent = item.link ? '原物链接' : '详情联系小助手';
+
+                itemDetails.appendChild(h2);
+                itemDetails.appendChild(pDescription);
+                itemDetails.appendChild(pPrice);
+                itemDetails.appendChild(link);
+
+                itemDiv.appendChild(mediaElement);
+                itemDiv.appendChild(itemDetails);
+
+                if (item.status === 'available') {
+                    availableItems.appendChild(itemDiv);
+                } else if (item.status === 'sold') {
+                    soldItems.appendChild(itemDiv);
+                }
+            }
 
             const searchInput = document.querySelector('.search-bar input');
             searchInput.addEventListener('input', function() {
@@ -356,7 +284,8 @@
                 
                 items.forEach(item => {
                     const itemName = item.querySelector('h2').textContent.toLowerCase();
-                    if (itemName.includes(searchQuery)) {
+                    const itemDescription = item.querySelector('p').textContent.toLowerCase();
+                    if (itemName.includes(searchQuery) || itemDescription.includes(searchQuery)) {
                         item.style.display = 'flex';
                     } else {
                         item.style.display = 'none';
@@ -364,33 +293,6 @@
                 });
             });
         });
-
-        function openModal(imageUrl) {
-            document.getElementById('modalImage').src = imageUrl;
-            document.getElementById('myModal').style.display = "block";
-        }
-
-        function closeModal() {
-            document.getElementById('myModal').style.display = "none";
-        }
-
-        function recordClick(itemId) {
-            let count = localStorage.getItem(itemId) || 0;
-            count = parseInt(count) + 1;
-            localStorage.setItem(itemId, count);
-            console.log(`Item ${itemId} has been clicked ${count} times.`);
-        }
-
-        function logClickCounts() {
-            const items = document.querySelectorAll('.item-link');
-            items.forEach(item => {
-                const itemId = item.getAttribute('data-item-id');
-                const count = localStorage.getItem(itemId) || 0;
-                console.log(`Item ${itemId} has been clicked ${count} times.`);
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', logClickCounts);
     </script>
 </body>
 </html>

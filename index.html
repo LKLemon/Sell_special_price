@@ -144,8 +144,7 @@
         <div class="search-bar">
             <input type="text" placeholder="搜索物品...">
         </div>
-        <p>详情联系小助手微信：wzh101 </p>
-        <p> ps:现在网页有点开图片视频放大看 之后关不掉的bug 带来不便很抱歉 在修复ing</p>
+        <p>详情联系小助手微信：wzh101</p>
 
         <h2 class="section-title">在售物品</h2>
         <div id="available-items"></div>
@@ -176,7 +175,7 @@
                 {id: 'item6', imgSrc: './assets/images/T_FAL_Air_wok.png', name: 'T-Fal 空气炸锅', description: '妈妈再也不用担心我吃油炸食品了， 非油炸培烤的来了！', price: '$60', link: 'https://www.amazon.ca/EY201850-Dishwasher-Patented-Basket-System/dp/B07NHPTKR8/ref=sr_1_3?crid=2CGSCSY6N0828&dib=eyJ2IjoiMSJ9.jObOD8ouXXAad2rw_6wMY-QFQsQhx-KCf9ti1GCPFso_q0Zyq7dlTx0SB67TF5kD5eiDIeK4-jPVLhpcdc4Hb9PpaFbJXnDqK4R6jCAr8f9XRBEDe65eefuMVA8fyD9u45ZSg5jv_pAX4qIQ3vnxz97PkYEoOI0_Ue1xhOID5-HXLNrSvq_dUXrNg5_YY9G6ycXSQlMw6ecgPuIgx74xo_42uOFQTfY0OQ62m1mAkg4.X_XcbK5JHQFUJPFjSzuKVFKSvtvToTZ6hY_rYtKbGdU&dib_tag=se&keywords=t-fal+%E7%A9%BA%E6%B0%94%E7%82%B8%E9%94%85+4.2l&qid=1716522251&s=kitchen&sprefix=t-fal+%E7%A9%BA%E6%B0%94%E7%82%B8%E9%94%85+4+2l%2Ckitchen%2C127&sr=1-3', status: 'sold'},
                 {id: 'item7', imgSrc: './assets/images/instantpot.png', name: '高压锅', description: '炖肉好快！多功能', price: '$30', link: '', status: 'sold'},
                 {id: 'item8', imgSrc: './assets/images/potpot.png', name: '美的电饭煲', description: '这个做出来的米饭真的香 家乡的味道！', price: '$49', link: 'https://www.amazon.ca/Midea-Steamer-Vegetable-Automatic-Digital/dp/B0D2M1D5J1/ref=asc_df_B07C54TCH2/?tag=googleshopc0c-20&linkCode=df0&hvadid=459616812146&hvpos=&hvnetw=g&hvrand=4191944521268539787&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9000871&hvtargid=pla-1344937441367&mcid=d809c55960d33182905656dda0030e57&th=1', status: 'available'},
-                {id: 'item9', imgSrc: './assets/images/guitar.png', name: 'fg830雅马哈吉他 ➕琴包', description: '谁还没有个音乐梦呢？！', price: '$360', link: 'https://amazon.ca/Yamaha-FG830-Acoustic-Guitar-Natural/dp/B01CFOAQP2/ref=asc_df_B01CFOAQP2/?tag=googleshopc0c-20&linkCode=df0&hvadid=335979969975&hvpos=&hvnetw=g&hvrand=2228647222519820943&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9000871&hvtargid=pla-384958103218&psc=1&mcid=94d9ecd327173273a10b31a2ae5f4499', status: 'available'},
+                {id: 'item9', imgSrc: './assets/images/guitar.png', name: 'fg830雅马哈吉他 ➕琴包', description: '谁还没有个音乐梦呢？！', price: '$360', link: 'https://amazon.ca/Yamaha-FG830-Acoustic-Guitar-Natural/dp/B01CFOAQP2/ref=asc_df_B01CFOAQP2/?tag=googleshopc0c-20&linkCode=df0&hvadid=335979969975&hvpos=&hvnetw=g&hvrand=2228647222519820943&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9000871&hvtargid=pla-384958103218&psc=1&mcid=94d9ecd327173273a10b31a2ae5f4499', status: 'sold'},
                 {id: 'item10', imgSrc: './assets/images/dysonv15.png', name: 'dyson v15 吸尘器（四个头）', description: '今天也有好好清洁呢 还能统计消灭了多少灰尘 又是元气满满的一天呢', price: '$500', link: 'https://www.dysoncanada.ca/en/vacuum-cleaners/cordless/v15', status: 'sold'},
                 {id: 'item11', imgSrc: './assets/images/bed.png', name: '好看的床架 (double)', description: '好看好搬好拆卸', price: '$99', link: '', status: 'available'},
                 {id: 'item12', imgSrc: './assets/images/matrice1.png', name: '床垫(double)', description: '有俩床垫 可以自己挑', price: '$79', link: '', status: 'available'},
@@ -212,9 +211,17 @@
 
             function closeModal() {
                 document.getElementById('myModal').style.display = 'none';
-                document.getElementById('modalImage').src = '';
+
+                const modalImage = document.getElementById('modalImage');
                 const modalVideo = document.getElementById('modalVideo');
+
+                // 确保图片不显示
+                modalImage.style.display = 'none';
+                modalImage.src = '';
+
+                // 确保视频停止并且不显示
                 modalVideo.pause();
+                modalVideo.style.display = 'none';
                 modalVideo.src = '';
             }
 
